@@ -46,7 +46,11 @@ namespace Contacts.API.Extensions
         {
             var connectionString = applicationBuilder.Configuration.GetConnectionString("DefaultConnection");
 
-            applicationBuilder.Services.AddDbContext<ContactsContext>((options) => options.UseNpgsql(connectionString));
+            applicationBuilder.Services.AddDbContext<ContactsContext>(
+                (options) =>
+                {
+                    options.UseNpgsql(connectionString);
+                });
 
             return applicationBuilder;
         }

@@ -1,10 +1,13 @@
-Перед тестом в папке со слоем Апи выполнить команду:
+CRUD Список контактов в луковой архитектуре
 
-docker compose up -d --force-recreate --no-deps --build postgres
+Инструкция по запуску:
+	Перед тестом в папке со слоем Апи выполнить команду:
 
-После этого в корневой папке со всеми слоями выполнить следующие команды:
+	docker compose up -d
 
-dotnet ef migrations add Init --project Contacts.Data --startup-project Contacts.API
-dotnet ef database update --project Contacts.Data --startup-project Contacts.API
+	После этого в корневой папке со всеми слоями выполнить следующие команды:
 
-эти команды создадут контейнер с базой данных в докере и всё будет работать
+	dotnet ef migrations add Init -s .\Contacts.API\ -p .\Contacts.Data\
+	dotnet ef database update -s .\Contacts.API\ -p .\Contacts.Data\
+
+	эти команды создадут контейнер с базой данных в докере и всё будет работать
