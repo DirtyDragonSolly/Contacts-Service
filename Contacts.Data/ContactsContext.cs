@@ -1,4 +1,4 @@
-﻿using Contacts.Core.Models.Entities;
+﻿using Contacts.Data.Configurations;
 using Contacts.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,7 +14,9 @@ namespace Contacts.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Contact>().ToTable("contacts");
+            modelBuilder.Entity<ContactEntity>().ToTable("contacts");
+
+            modelBuilder.ApplyConfiguration(new ContactsConfiguration());
         }
     }
 }
